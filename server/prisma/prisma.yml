@@ -1,6 +1,5 @@
 # The HTTP endpoint for your Prisma API
-#endpoint: ''
-endpoint: https://us1.prisma.sh/joao-coelho/react-graphql-auth/dev
+endpoint: ''
 
 # Points to the file that contains your datamodel
 datamodel: datamodel.prisma
@@ -9,3 +8,8 @@ datamodel: datamodel.prisma
 generate:
   - generator: javascript-client
     output: ../src/generated/prisma-client
+
+# Ensures Prisma client is re-generated after a datamodel change.
+hooks:
+  post-deploy:
+    - prisma generate
